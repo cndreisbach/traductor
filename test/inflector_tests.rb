@@ -20,4 +20,6 @@ context "I18n with :es" do
   should("translate and singularize into English") {
     I18n.t(:tourism_office, :locale => :en).pluralize(:en)
   }.matches("tourism offices")
+
+  should("tableize correctly") { "OficinaDeTurismo".tableize }.equals "oficina_de_turismo"
 end
