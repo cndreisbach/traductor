@@ -1,3 +1,11 @@
+# module I18n
+#   class << self
+#     def default?
+#       default_locale == locale
+#     end
+#   end
+# end
+
 module ActiveSupport
   class ModelName
     def initialize(name)

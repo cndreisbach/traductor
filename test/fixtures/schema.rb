@@ -17,8 +17,8 @@ ActiveRecord::Schema.define do
   end
   
   create_table "translations" do |t|
-    t.references "source", :polymorphic => true
-    t.string "locale"
-    t.text "fields"
+    t.references 'source', :polymorphic => true
+    t.string 'locale'
+    t.text 'fields'
   end
 end
