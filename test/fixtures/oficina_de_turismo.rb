@@ -1,3 +1,1 @@
-class OficinaDeTurismo < ActiveRecord::Base
-  
-end
+class OficinaDeTurismo < ActiveRecord::Base; end

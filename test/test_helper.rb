@@ -13,11 +13,12 @@ ActiveRecord::Base.establish_connection({
   :database => ':memory:'
 })
 
-%w(schema oficina_de_turismo).each do |fixture|
-  require "fixtures/#{fixture}"
-end
+require 'fixtures/schema'
 
 require File.join(File.dirname(__FILE__), '../init')
+require "fixtures/oficina_de_turismo"
+require "fixtures/site"
+
 
 
 

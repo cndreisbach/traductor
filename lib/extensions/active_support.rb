@@ -49,11 +49,13 @@ module ActiveSupport
     #   end
     def inflections(locale = nil)
       locale ||= I18n.locale
-      locale_class = if locale.to_s == :en
-        ActiveSupport::Inflector::Inflections
-      else
-        ActiveSupport::Inflector.const_get("Inflections_#{locale}") rescue nil
-      end
+      # locale_class = if locale.to_s == :en
+      #         ActiveSupport::Inflector::Inflections
+      #       else
+      #         ActiveSupport::Inflector.const_get("Inflections_#{locale}") rescue nil
+      #       end
+
+      locale_class = ActiveSupport::Inflector.const_get("Inflections_#{locale}") rescue nil
 
       if locale_class.nil?
         ActiveSupport::Inflector.module_eval %{
@@ -130,7 +132,7 @@ module ActiveSupport
     #   "egg_and_ham".tableize     # => "egg_and_hams"
     #   "fancyCategory".tableize   # => "fancy_categories"
     def tableize(class_name)
-      underscore(pluralize(class_name.humanize, I18n.default_locale)).tr(' ', '_')
+      class_name.to_s.underscore.humanize.downcase.pluralize(I18n.default_locale).tr(' ', '_')
     end
   end
 end
